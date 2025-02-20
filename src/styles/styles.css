@@ -1,0 +1,43 @@
+html, body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    background-color: #95A8CF;
+}
+
+.form-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    height: 4rem;
+    width: 30rem;
+    border-radius: 0.8rem;
+    gap: 15px;
+    background-color: #0E1524;
+}
+
+form input {
+    border-radius: 0.3rem;
+}
+
+#userList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.card {
+    background: #C5CDDD;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
+}
