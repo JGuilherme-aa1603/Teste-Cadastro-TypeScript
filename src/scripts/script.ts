@@ -12,17 +12,17 @@ interface User {
 
 let users: User[] = [];
 
-const form = document.getElementById("userForm") as HTMLFormElement;
-const userList = document.getElementById("userList") as HTMLDivElement;
+const form : HTMLFormElement = document.getElementById("userForm");
+const userList : HTMLDivElement = document.getElementById("userList");
 
 form.addEventListener("submit", (event) => {
     event.preventDefault();
 
-    const nameInput = document.getElementById("name") as HTMLInputElement;
-    const emailInput = document.getElementById("email") as HTMLInputElement;
+    const nameInput : HTMLInputElement = document.getElementById("name");
+    const emailInput : HTMLInputElement = document.getElementById("email");
     
-    const name = nameInput.value.trim();
-    const email = emailInput.value.trim();
+    const name : string = nameInput.value.trim();
+    const email : string = emailInput.value.trim();
 
     if (name && email) {
         const newUser: User = {
@@ -39,7 +39,7 @@ form.addEventListener("submit", (event) => {
 });
 
 function addUserCard(user: User): void {
-    const card = document.createElement("div");
+    const card : HTMLDivElement = document.createElement("div");
     card.classList.add("card");
 
     card.innerHTML = `
