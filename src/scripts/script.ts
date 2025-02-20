@@ -12,14 +12,14 @@ interface User {
 
 let users: User[] = [];
 
-const form : HTMLFormElement = document.getElementById("userForm");
-const userList : HTMLDivElement = document.getElementById("userList");
+const form = document.getElementById("userForm") as HTMLFormElement;
+const userList = document.getElementById("userList") as HTMLDivElement;
 
 form.addEventListener("submit", (event) => {
     event.preventDefault();
 
-    const nameInput : HTMLInputElement = document.getElementById("name");
-    const emailInput : HTMLInputElement = document.getElementById("email");
+    const nameInput = document.getElementById("name") as HTMLInputElement;
+    const emailInput = document.getElementById("email") as HTMLInputElement;
     
     const name : string = nameInput.value.trim();
     const email : string = emailInput.value.trim();
