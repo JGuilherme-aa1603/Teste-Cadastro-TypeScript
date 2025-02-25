@@ -14,19 +14,18 @@ form.addEventListener("submit", function (event) {
     var email = emailInput.value.trim();
     if (name && email) {
         var newUser = {
-            id: users.length + 1,
             name: name,
             email: email,
             role: Math.floor(Math.random() * 2) == 0 ? UserRole.ADMIN : UserRole.USER
         };
-        users.push(newUser);
-        addUserCard(newUser);
+        alert("Usu\u00E1rio ".concat(newUser.name, " cadastrado com sucesso!"));
+        window.addData(newUser.name, newUser.email, newUser.role);
         form.reset();
     }
 });
 function addUserCard(user) {
     var card = document.createElement("div");
     card.classList.add("card");
-    card.innerHTML = "\n        <strong>".concat(user.name, "</strong>\n        <br>").concat(user.email, "<br>\n        <br><small>").concat(user.role, "</small></br>\n        <small>id: ").concat(user.id, "</small>\n    ");
+    card.innerHTML = "\n        <strong>".concat(user.name, "</strong>\n        <br>").concat(user.email, "<br>\n        <br><small>").concat(user.role, "</small></br>\n    ");
     userList.appendChild(card);
 }

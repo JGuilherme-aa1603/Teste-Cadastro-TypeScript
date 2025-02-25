@@ -4,7 +4,6 @@ enum UserRole {
 }
 
 interface User {
-    id: number;
     name: string;
     email: string;
     role: UserRole;
@@ -26,14 +25,12 @@ form.addEventListener("submit", (event) => {
 
     if (name && email) {
         const newUser: User = {
-            id: users.length + 1,
             name,
             email,
             role: Math.floor(Math.random() * 2) == 0 ? UserRole.ADMIN : UserRole.USER
         }
-        users.push(newUser);
-
-        addUserCard(newUser);
+        alert(`Usuário ${newUser.name} cadastrado com sucesso!`);
+        window.addData(newUser.name, newUser.email, newUser.role);
         form.reset();
     }
 });
@@ -46,7 +43,6 @@ function addUserCard(user: User): void {
         <strong>${user.name}</strong>
         <br>${user.email}<br>
         <br><small>${user.role}</small></br>
-        <small>id: ${user.id}</small>
     `;
 
     userList.appendChild(card);
