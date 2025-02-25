@@ -18,7 +18,6 @@ form.addEventListener("submit", function (event) {
             email: email,
             role: Math.floor(Math.random() * 2) == 0 ? UserRole.ADMIN : UserRole.USER
         };
-        alert("Usu\u00E1rio ".concat(newUser.name, " cadastrado com sucesso!"));
         window.addData(newUser.name, newUser.email, newUser.role);
         form.reset();
     }

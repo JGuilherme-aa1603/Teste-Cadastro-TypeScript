@@ -29,7 +29,6 @@ form.addEventListener("submit", (event) => {
             email,
             role: Math.floor(Math.random() * 2) == 0 ? UserRole.ADMIN : UserRole.USER
         }
-        alert(`Usuário ${newUser.name} cadastrado com sucesso!`);
         window.addData(newUser.name, newUser.email, newUser.role);
         form.reset();
     }
