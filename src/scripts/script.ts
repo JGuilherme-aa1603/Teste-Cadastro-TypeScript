@@ -1,19 +1,19 @@
-enum UserRole {
+enum UserRole { //Enumeração
     ADMIN = "Administrador",
     USER = "Usuário Comum"
 }
 
-interface User {
+interface User { //Interface
     name: string;
     email: string;
     role: UserRole;
 }
 
-let users: User[] = [];
-
+//Tipagem
 const form = document.getElementById("userForm") as HTMLFormElement;
 const userList = document.getElementById("userList") as HTMLDivElement;
 
+//Adicionar dados de cada card
 form.addEventListener("submit", (event) => {
     event.preventDefault();
 
@@ -23,8 +23,8 @@ form.addEventListener("submit", (event) => {
     const name : string = nameInput.value.trim();
     const email : string = emailInput.value.trim();
 
-    if (name && email) {
-        const newUser: User = {
+    if (name && email) { 
+        const newUser: User = { //Objeto
             name,
             email,
             role: Math.floor(Math.random() * 2) == 0 ? UserRole.ADMIN : UserRole.USER
@@ -34,15 +34,16 @@ form.addEventListener("submit", (event) => {
     }
 });
 
-function addUserCard(user: User): void {
-    const card : HTMLDivElement = document.createElement("div");
-    card.classList.add("card");
+//Mostrar e esconder o formulário
+const loginContainer = document.querySelector(".loginContainer") as HTMLDivElement;
+const loginButton = document.getElementById("loginButton") as HTMLButtonElement;
 
-    card.innerHTML = `
-        <strong>${user.name}</strong>
-        <br>${user.email}<br>
-        <br><small>${user.role}</small></br>
-    `;
+loginButton.addEventListener("click", () => {
+    loginContainer.id = "";
+});
 
-    userList.appendChild(card);
-}
+loginContainer.addEventListener("click", (event) => {
+    if (event.target === loginContainer) {
+        loginContainer.id = "hidden";
+    }
+});

@@ -14,81 +14,32 @@
         <form id="userForm">
             <input type="text" id="name" placeholder="Nome" required>
             <input type="email" id="email" placeholder="E-mail" required>
-            <button type="submit" id="submitButton">Cadastrar</button>
+            <button type="submit" class="button" id="submitButton">Cadastrar</button>
         </form>
+    </div>
+    
+    <div>
+        <button class="button" id="loginButton">Login</button>
     </div>
 
     <div class="users-container">
         <div id="userList">
 
         </div>
+    
+    <div class="loginContainer" id="hidden">
+        <div class="login">
+            <form id="loginForm">
+                <input type="email" id="loginUser" placeholder="Email" required>
+                <input type="password" id="loginPassword" placeholder="Senha" required>
+                <button type="submit" class="button" id="loginSubmitButton">Entrar</button>
+            </form>
+        </div>
     </div>
+
 
 </body>
 
-<script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-app.js";
-    import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-analytics.js";
-    import { getDatabase, ref, child, get, set, update, remove, onValue } from 'https://www.gstatic.com/firebasejs/11.3.1/firebase-database.js';
-  
-    const firebaseConfig = {
-        apiKey: "AIzaSyC3pR2blAhoSI5XgGNWPX7mqnkU1sOo5Ac",
-
-        authDomain: "cadastro-typescript.firebaseapp.com",
-
-        projectId: "cadastro-typescript",
-
-        storageBucket: "cadastro-typescript.firebasestorage.app",
-
-        messagingSenderId: "470810423897",
-
-        appId: "1:470810423897:web:316779250240b093e4f748",
-
-        measurementId: "G-7VRTWMDXL0"
-
-    };
-  
-    const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
-    window.db = getDatabase(app);
-    const usersRef = ref(db, 'users');
-
-    window.addData = function(name, email, role) {
-        set(ref(db, 'users/' + Date.now()), {
-            name: name,
-            email: email,
-            role: role
-        }).catch((error) => {
-            alert('Erro ao adicionar dados: ' + error);
-        })
-    }
-
-    window.removeData = function(key) {
-        remove(ref(db, 'users/' + key)).catch((error) => {
-            alert('Erro ao remover dados: ' + error);
-        });
-    }
-
-    function listener() {
-        onValue(usersRef, (snapshot) => {
-            const data = snapshot.val();
-            const userList = document.getElementById('userList');
-            userList.innerHTML = '';
-            for (let key in data) {
-                const user = data[key];
-                userList.innerHTML += `
-                    <div class="card">
-                        <strong>${user.name}</strong>
-                        <br>${user.email}<br>
-                        <br><small>${user.role}</small></br>
-                        <button class="user-button" onclick="removeData('${key}')">Remover</button>
-                    </div>
-                `;
-            }
-        });
-    }
-
-    listener();
-  </script>
+<script type="module" src="src/scripts/firebase.js"></script>
 
 </html>

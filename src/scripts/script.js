@@ -3,7 +3,6 @@ var UserRole;
     UserRole["ADMIN"] = "Administrador";
     UserRole["USER"] = "Usu\u00E1rio Comum";
 })(UserRole || (UserRole = {}));
-var users = [];
 var form = document.getElementById("userForm");
 var userList = document.getElementById("userList");
 form.addEventListener("submit", function (event) {
@@ -22,9 +21,13 @@ form.addEventListener("submit", function (event) {
         form.reset();
     }
 });
-function addUserCard(user) {
-    var card = document.createElement("div");
-    card.classList.add("card");
-    card.innerHTML = "\n        <strong>".concat(user.name, "</strong>\n        <br>").concat(user.email, "<br>\n        <br><small>").concat(user.role, "</small></br>\n    ");
-    userList.appendChild(card);
-}
+var loginContainer = document.querySelector(".loginContainer");
+var loginButton = document.getElementById("loginButton");
+loginButton.addEventListener("click", function () {
+    loginContainer.id = "";
+});
+loginContainer.addEventListener("click", function (event) {
+    if (event.target === loginContainer) {
+        loginContainer.id = "hidden";
+    }
+});
