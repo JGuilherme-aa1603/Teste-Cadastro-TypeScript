@@ -1,4 +1,4 @@
-enum UserRole { //Enumeração
+enum UserRole { //Enums
     ADMIN = "Administrador",
     USER = "Usuário Comum"
 }
