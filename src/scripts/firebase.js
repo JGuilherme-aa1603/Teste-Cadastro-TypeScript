@@ -2,6 +2,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebas
 import { getDatabase, ref, set, remove, onValue } from 'https://www.gstatic.com/firebasejs/11.3.1/firebase-database.js';
 import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/11.3.1/firebase-auth.js';
 
+//Configuração do Firebase
 const firebaseConfig = {
     apiKey: "AIzaSyC3pR2blAhoSI5XgGNWPX7mqnkU1sOo5Ac",
 
@@ -19,10 +20,13 @@ const firebaseConfig = {
 
 };
 
+//Inicialização do Firebase
 const app = initializeApp(firebaseConfig);
 window.db = getDatabase(app);
+
 const usersRef = ref(db, 'users');
 
+//Adicionar Usuário ao banco de dados
 window.addData = function(name, email, role) {
     set(ref(db, 'users/' + Date.now()), {
         name: name,
@@ -33,12 +37,15 @@ window.addData = function(name, email, role) {
     })
 }
 
+//Remover Usuário do banco de dados
 window.removeData = function(key) {
     remove(ref(db, 'users/' + key)).catch((error) => {
         alert('Erro ao remover dados: ' + error);
     });
 }
 
+
+//Escutar mudanças e atualizar a lista de usuários
 function listener() {
     onValue(usersRef, (snapshot) => {
         const data = snapshot.val();
@@ -60,10 +67,12 @@ function listener() {
 
 listener();
 
+//Login
 const auth = getAuth(app);
 const submit = document.getElementById('loginSubmitButton');
 const loginContainer = document.querySelector('.loginContainer');
 
+//Executar o login
 submit.addEventListener('click', (event) => {
     const email = document.getElementById('loginUser').value;
     const password = document.getElementById('loginPassword').value;
@@ -82,6 +91,8 @@ submit.addEventListener('click', (event) => {
         });
 });
 
+
+//Verificar se o usuário está logado
 onAuthStateChanged(auth, (user) => {
     if (user) {
       alert('Usuário logado:', user);
