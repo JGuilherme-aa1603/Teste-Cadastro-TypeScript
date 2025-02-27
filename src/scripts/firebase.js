@@ -72,7 +72,6 @@ submit.addEventListener('click', (event) => {
         .then((userCredential) => {
             const user = userCredential.user;
             console.log('Usuário logado:', user);
-            alert('Usuário logado com sucesso!');
             loginContainer.id = 'hidden';
         })
         .catch((error) => {
