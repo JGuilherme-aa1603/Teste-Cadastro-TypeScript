@@ -1,0 +1,5 @@
+Slides: https://www.canva.com/design/DAGgyXHkN8w/51oJd89r49-2a8fMHOM5ug/edit?utm_content=DAGgyXHkN8w&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
+
+Github: https://jguilherme-aa1603.github.io/Teste-Cadastro-TypeScript/
+
+Stack Blitz: https://stackblitz.com/~/github.com/JGuilherme-aa1603/Teste-Cadastro-TypeScript?file=index.html
