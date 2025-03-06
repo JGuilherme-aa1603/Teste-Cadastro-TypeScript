@@ -161,7 +161,7 @@ form input:focus {
 
 #userList:hover .card:not(:hover) {
     transform: scale(0.95);
-    filter: blur(0.035rem);
+    filter: blur(0.55px);
 }
 
 .card {
