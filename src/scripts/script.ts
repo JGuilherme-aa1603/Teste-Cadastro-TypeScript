@@ -1,12 +1,12 @@
-enum UserRole { //Enums
+enum userRole { //Enumeração
     ADMIN = "Administrador",
     USER = "Usuário Comum"
 }
 
-interface User { //Interface
+interface user { //Interface
     name: string;
     email: string;
-    role: UserRole;
+    role: userRole;
 }
 
 //Tipagem
@@ -24,11 +24,11 @@ form.addEventListener("submit", (event) => {
     const email : string = emailInput.value.trim();
 
     if (name && email) { 
-        const newUser: User = { //Objeto
+        const newUser: user = { //Objeto
             name,
             email,
-            role: Math.floor(Math.random() * 2) == 0 ? UserRole.ADMIN : UserRole.USER
-        }
+            role: Math.floor(Math.random() * 2) == 0 ? userRole.ADMIN : userRole.USER
+        };
         window.addData(newUser.name, newUser.email, newUser.role);
         form.reset();
     }
