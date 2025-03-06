@@ -82,9 +82,32 @@ form input:focus {
     display: none;
 }
 
+.userAccount {
+    position: absolute;
+    display: flex;
+    top: 3%;
+    right: 2%;
+    gap: 1rem;
+}
+
+#loginButton {
+    height: 3rem;
+    width: 8rem;
+    top: 3%;
+    right: 2%;
+}
+
+#logOutButton {
+    height: 3rem;
+    width: 8rem;
+    top: 3%;
+    right: 10%;
+    margin-right: 20x;
+}
+
 .loginContainer {
     display: flex;
-    background-color: #20202293;
+    background-color: #202022b6;
     position: absolute;
     height: 100vh;
     width: 100vw;
@@ -120,14 +143,6 @@ form input:focus {
     margin-top: 8rem;
 }
 
-#loginButton {
-    position: absolute;
-    height: 3rem;
-    width: 8rem;
-    top: 3%;
-    right: 2%;
-}
-
 .users-container {
     display: flex;
     justify-content: center;
@@ -144,6 +159,10 @@ form input:focus {
     width: fit-content;
 }
 
+#userList:hover .card:not(:hover) {
+    transform: scale(0.95);
+}
+
 .card {
     display: flex;
     flex-direction: column;
@@ -155,7 +174,12 @@ form input:focus {
     transition: all 0.2s ease;
 }
 
-.user-button {
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.4);
+}
+
+.card button {
     background-color: #e8e8e8;
     border: 0;
     border-radius: 0.3rem;
@@ -164,18 +188,9 @@ form input:focus {
     transition: all 0.3s ease;
 }
 
-.user-button:hover {
+.card button:hover {
     filter: invert(0.15);
     transform: scale(1.06);
-}
-
-.card:hover {
-    transform: scale(1.05);
-    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.4);
-}
-
-#userList:hover .card:not(:hover) {
-    transform: scale(0.95);
 }
 
 @media only screen and (max-width: 768px)
@@ -191,5 +206,12 @@ form input:focus {
 
     .users-container {
         margin-top: 10rem;
+    }
+
+    .userAccount {
+        justify-content: space-between;
+        width: 90%;
+        left: 5%;
+        right: 5%;
     }
 }

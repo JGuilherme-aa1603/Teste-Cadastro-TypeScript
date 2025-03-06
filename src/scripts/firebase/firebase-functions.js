@@ -1,28 +1,7 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-app.js";
-import { getDatabase, ref, set, remove, onValue } from 'https://www.gstatic.com/firebasejs/11.3.1/firebase-database.js';
-import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/11.3.1/firebase-auth.js';
+import { ref, set, remove, onValue } from 'https://www.gstatic.com/firebasejs/11.3.1/firebase-database.js';
+import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from 'https://www.gstatic.com/firebasejs/11.3.1/firebase-auth.js';
+import { app, db } from './firebase-config.js';
 
-//Configuração do Firebase
-const firebaseConfig = {
-    apiKey: "AIzaSyC3pR2blAhoSI5XgGNWPX7mqnkU1sOo5Ac",
-
-    authDomain: "cadastro-typescript.firebaseapp.com",
-
-    projectId: "cadastro-typescript",
-
-    storageBucket: "cadastro-typescript.firebasestorage.app",
-
-    messagingSenderId: "470810423897",
-
-    appId: "1:470810423897:web:316779250240b093e4f748",
-
-    measurementId: "G-7VRTWMDXL0"
-
-};
-
-//Inicialização do Firebase
-const app = initializeApp(firebaseConfig);
-window.db = getDatabase(app);
 
 const usersRef = ref(db, 'users');
 
@@ -37,12 +16,16 @@ window.addData = function(name, email, role) {
     })
 }
 
+
+
 //Remover Usuário do banco de dados
 window.removeData = function(key) {
     remove(ref(db, 'users/' + key)).catch((error) => {
         alert('Erro ao remover dados: ' + error);
     });
 }
+
+
 
 
 //Escutar mudanças e atualizar a lista de usuários
@@ -58,7 +41,7 @@ function listener() {
                     <strong>${user.name}</strong>
                     <br>${user.email}<br>
                     <br><small>${user.role}</small></br>
-                    <button class="user-button" onclick="removeData('${key}')">Remover</button>
+                    <button onclick="removeData('${key}')">Remover</button>
                 </div>
             `;
         }
@@ -67,16 +50,19 @@ function listener() {
 
 listener();
 
+
+
 //Login
 const auth = getAuth(app);
 const submit = document.getElementById('loginSubmitButton');
 const loginContainer = document.querySelector('.loginContainer');
 
-//Executar o login
 submit.addEventListener('click', (event) => {
     const email = document.getElementById('loginUser').value;
     const password = document.getElementById('loginPassword').value;
+
     event.preventDefault();
+
     signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             const user = userCredential.user;
@@ -92,6 +78,8 @@ submit.addEventListener('click', (event) => {
 });
 
 
+
+
 //Verificar se o usuário está logado
 onAuthStateChanged(auth, (user) => {
     if (user) {
@@ -100,3 +88,15 @@ onAuthStateChanged(auth, (user) => {
       alert('Nenhum usuário logado');
     }
 });
+
+
+
+//LogOut
+const logOutButton = document.querySelector('#logOutButton')
+logOutButton.addEventListener('click', (event) => {
+    event.preventDefault();
+
+    signOut(auth).catch( (error) => {
+        alert('Erro ao deslogar: ' + error)
+    })
+})

@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Usuários</title>
 
-    <script type="module" src="./src/scripts/script.js" defer></script>
+    <script type="module" src="src/scripts/firebase/firebase-config.js" defer></script>
+    <script type="module" src="src/scripts/firebase/firebase-functions.js" defer></script>
+    <script src="./src/scripts/script.js" defer></script>
     
     <link rel="stylesheet" href="./src/styles/styles.css">
 </head>
@@ -18,8 +20,9 @@
         </form>
     </div>
     
-    <div>
+    <div class="userAccount">
         <button class="button" id="loginButton">Login</button>
+        <button class="button" id="logOutButton">Deslogar</button>
     </div>
 
     <div class="users-container">
@@ -39,7 +42,5 @@
 
 
 </body>
-
-<script type="module" src="src/scripts/firebase.js"></script>
 
 </html>

@@ -1,1 +1,1 @@
-declare function addData(name: string, email: string, role: UserRole): void;
+declare function addData(name: string, email: string, role: userRole): void;
