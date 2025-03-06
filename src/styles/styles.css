@@ -161,6 +161,7 @@ form input:focus {
 
 #userList:hover .card:not(:hover) {
     transform: scale(0.95);
+    filter: invert(0.09);
 }
 
 .card {
@@ -175,6 +176,7 @@ form input:focus {
 }
 
 .card:hover {
+    filter:contrast(1.7);
     transform: scale(1.05);
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.4);
     color: #e8e8e8;
