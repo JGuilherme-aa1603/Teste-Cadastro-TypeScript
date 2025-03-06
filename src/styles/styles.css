@@ -177,6 +177,7 @@ form input:focus {
 .card:hover {
     transform: scale(1.05);
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.4);
+    color: #e8e8e8;
 }
 
 .card button {
